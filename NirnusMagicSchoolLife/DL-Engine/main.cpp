@@ -10,8 +10,10 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR, INT cmdS
 	if (CONSOLE_ON) {
 		console.OpenConsole();
 	}
-
+	
 	Application app(hInstance, cmdShow);
 
-	return app.DoMainLoop(new MainScene());
+	int msg = app.DoMainLoop(new MainScene());
+	
+	return msg;
 }

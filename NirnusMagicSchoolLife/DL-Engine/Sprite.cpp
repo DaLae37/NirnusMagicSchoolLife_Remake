@@ -19,7 +19,7 @@ Sprite::Sprite(const wchar_t* path) {
 }
 
 Sprite::~Sprite() {
-
+	
 }
 
 void Sprite::Render() {

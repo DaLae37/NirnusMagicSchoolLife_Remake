@@ -43,11 +43,11 @@ HRESULT Application::CreateDeviceIndependentResources() {
 	const D2D1_FACTORY_OPTIONS opts = { D2D1_DEBUG_LEVEL_INFORMATION };
 
 	hr = CoCreateInstance(CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&wicFactory));
-
+	
 	if (SUCCEEDED(hr)) {
 		hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &factory);
 	}
-
+	
 	return hr;
 }
 
@@ -160,9 +160,9 @@ void Application::DeleteManager() {
 }
 
 void Application::ReleaseDirect2D() {
-	SAFE_RELEASE(factory);
-	SAFE_RELEASE(renderTarget);
-	SAFE_RELEASE(wicFactory);
+	wicFactory = NULL;
+	factory = NULL;
+	renderTarget = NULL;
 }
 
 float Application::getDeltaTime() {

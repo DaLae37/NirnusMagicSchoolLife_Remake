@@ -6,9 +6,7 @@ TextureManager::TextureManager() {
 }
 
 TextureManager::~TextureManager() {
-	for (auto& texture : textureMap) {
-		SAFE_RELEASE(texture.second);
-	}
+
 }
 
 ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
