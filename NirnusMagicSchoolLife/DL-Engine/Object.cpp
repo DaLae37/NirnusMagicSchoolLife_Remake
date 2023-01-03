@@ -106,7 +106,7 @@ void Object::setPos(D2D_POINT_2F pos) {
 }
 
 void Object::setRotation(float rotation) {
-	this->rotation += rotation;
+	this->rotation = rotation;
 }
 
 void Object::setRotationCenter(D2D_POINT_2F rotationCenter) {

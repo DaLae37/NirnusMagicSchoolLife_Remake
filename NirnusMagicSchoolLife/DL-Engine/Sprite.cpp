@@ -24,8 +24,10 @@ Sprite::~Sprite() {
 
 void Sprite::Render() {
 	Object::Render();
-
-	renderTarget->SetTransform(D2D1::Matrix3x2F::Scale(scale.x, scale.y, pos) * D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
+	D2D1_POINT_2F sca;
+	sca.x = width / 2;
+	sca.y = height / 2;
+	renderTarget->SetTransform(D2D1::Matrix3x2F::Translation(pos.x, pos.y) * D2D1::Matrix3x2F::Scale(scale.x, scale.y, sca) * D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
 	renderTarget->DrawBitmap(texture, &rect, color.a, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, nullptr);
 }
 
