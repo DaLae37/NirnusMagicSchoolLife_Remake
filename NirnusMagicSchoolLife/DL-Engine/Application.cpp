@@ -9,12 +9,13 @@ HWND hWnd;
 SceneManager* sceneManager;
 TextureManager* textureManager;
 InputManager* inputManager;
+SoundManager* soundManager;
 
 Application::Application(HINSTANCE hInstance, INT cmdShow) {
 	InitWindow(hInstance);
 	FloatWindow(hInstance, cmdShow);
-	InitDirect2D();
 
+	InitDirect2D();
 	InitDeltaTime();
 	InitManager();
 
@@ -95,6 +96,7 @@ void Application::InitManager() {
 	sceneManager = new SceneManager();
 	textureManager = new TextureManager();
 	inputManager = new InputManager();
+	soundManager = new SoundManager();
 }
 
 void Application::InitDeltaTime() {
@@ -157,6 +159,7 @@ void Application::DeleteManager() {
 	SAFE_DELETE(sceneManager);
 	SAFE_DELETE(textureManager);
 	SAFE_DELETE(inputManager);
+	SAFE_DELETE(soundManager);
 }
 
 void Application::ReleaseDirect2D() {

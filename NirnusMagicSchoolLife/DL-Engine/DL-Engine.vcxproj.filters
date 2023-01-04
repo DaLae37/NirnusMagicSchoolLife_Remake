@@ -87,6 +87,12 @@
     <ClCompile Include="MainScene.cpp">
       <Filter>소스 파일\Game\MainScene</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>소스 파일\Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>소스 파일\Framework\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -121,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>헤더 파일\Game\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>헤더 파일\Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>헤더 파일\Framework\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

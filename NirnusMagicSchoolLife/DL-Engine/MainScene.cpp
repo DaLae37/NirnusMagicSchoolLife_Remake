@@ -5,7 +5,7 @@ MainScene::MainScene() {
 	icon = new Sprite(L"Resources/Images/icon.png");
 	AddObject(icon);
 	icon->setPos(0, 0);
-	
+	soundManager->LoadAudioFromFile(L"Resources/Sounds/BackgroundSound.wav");
 	icon->setRotationCenter(icon->getWidth() / 2, icon->getHeight() / 2);
 	icon->setScale(0.5f, 0.5f);
 }
