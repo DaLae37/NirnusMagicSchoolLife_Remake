@@ -49,6 +49,9 @@
     <Filter Include="헤더 파일\Game\MainScene">
       <UniqueIdentifier>{4f04edcc-784f-4aaf-8de6-cbf6616a1f5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Game\GameScene">
+      <UniqueIdentifier>{102a55f1-60b5-4cf3-b5c2-002a673db3ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
