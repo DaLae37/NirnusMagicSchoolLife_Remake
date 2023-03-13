@@ -17,6 +17,8 @@ Object::Object() {
 	rect.right = 0;
 	rect.bottom = 0;
 
+	tag = "Object";
+
 	parent = nullptr;
 }
 
@@ -97,6 +99,10 @@ float Object::getRotation() {
 	return rotation;
 }
 
+std::string Object::getTag() {
+	return this->tag;
+}
+
 void Object::setParent(Object* parent) {
 	this->parent = parent;
 }
@@ -122,4 +128,8 @@ void Object::setScale(D2D_POINT_2F scale) {
 void Object::setScalingCenter(D2D_POINT_2F scaleCenter) {
 	scalingCenter.x = scaleCenter.x;
 	scalingCenter.y = scaleCenter.y;
+}
+
+void Object::setTag(std::string tag) {
+	this->tag = tag;
 }

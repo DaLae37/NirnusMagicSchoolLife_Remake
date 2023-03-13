@@ -68,7 +68,7 @@ HRESULT Application::CreateDeviceResources() {
 			size = D2D1::SizeU(SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
 
-		hr = factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size), &renderTarget);
+		hr = factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY), &renderTarget);
 
 		return hr;
 	}
@@ -171,10 +171,8 @@ void Application::ReleaseDirect2D() {
 float Application::getDeltaTime() {
 	QueryPerformanceCounter(&currentInterval);
 
-	LONGLONG interval = (currentInterval.QuadPart
-		- beforeInterval.QuadPart);
-	float dTime = (float)interval / 
-		(float)Frequency.QuadPart;
+	LONGLONG interval = (currentInterval.QuadPart - beforeInterval.QuadPart);
+	float dTime = (float)interval / (float)Frequency.QuadPart;
 	beforeInterval = currentInterval;
 
 	return dTime;
