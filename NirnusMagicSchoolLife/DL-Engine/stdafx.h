@@ -6,7 +6,7 @@
 #define SCREEN_HEIGHT 768
 #define PROGRAM_NAME TEXT("Engine")
 #define CONSOLE_NAME TEXT("Console")
-#define IS_FULL_SCREEN false
+#define IS_FULL_SCREEN true
 
 //라이브러리
 #pragma comment (lib,"WindowsCodecs.lib")

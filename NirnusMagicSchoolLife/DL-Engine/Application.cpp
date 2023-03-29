@@ -69,7 +69,7 @@ HRESULT Application::CreateDeviceResources() {
 		}
 
 		hr = factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY), &renderTarget);
-
+		
 		return hr;
 	}
 }
@@ -133,6 +133,36 @@ int Application::DoMainLoop(Scene* firstScene) {
 		if (PeekMessage(&Message, nullptr, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&Message);
 			DispatchMessage(&Message);
+		}
+
+		if (inputManager->GetKeyState('A') == KEY_DOWN) {
+			DWORD dwStyle = GetWindowLong(hWnd, GWL_STYLE);
+			WINDOWPLACEMENT m_wpPrev;
+			if (dwStyle & WS_OVERLAPPEDWINDOW)
+			{
+
+				m_wpPrev.length = sizeof(WINDOWPLACEMENT);
+				MONITORINFO mi = { sizeof(MONITORINFO) };
+				if (GetWindowPlacement(hWnd, &m_wpPrev) &&
+					GetMonitorInfo(MonitorFromWindow(hWnd, MONITOR_DEFAULTTOPRIMARY), &mi))
+				{
+					SetWindowLong(hWnd, GWL_STYLE,
+						dwStyle & ~WS_OVERLAPPEDWINDOW);
+					SetWindowPos(hWnd, HWND_TOP,
+						mi.rcMonitor.left, mi.rcMonitor.top,
+						mi.rcMonitor.right - mi.rcMonitor.left,
+						mi.rcMonitor.bottom - mi.rcMonitor.top,
+						SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+				}
+			}
+			else
+			{
+				SetWindowLong(hWnd, GWL_STYLE, dwStyle | WS_OVERLAPPEDWINDOW);
+				SetWindowPlacement(hWnd, &m_wpPrev);
+				SetWindowPos(hWnd, NULL, 0, 0, 0, 0,
+					SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
+					SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+			}
 		}
 
 		D2D_MATRIX_3X2_F identity = { 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };

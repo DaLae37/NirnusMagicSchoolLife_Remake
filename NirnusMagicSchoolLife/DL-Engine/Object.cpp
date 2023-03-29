@@ -62,17 +62,17 @@ bool Object::IsCollisionRect(Object * object) {
 	r2.top += object->getPosY();
 	r2.bottom += object->getPosY();
 
-	return (r1.left < r2.right&&
-			r1.right > r2.left &&
-			r1.top < r2.bottom&&
-			r1.bottom > r2.top);
+	return (r1.left <= r2.right&&
+			r1.right >= r2.left &&
+			r1.top <= r2.bottom&&
+			r1.bottom >= r2.top);
 }
 
 bool Object::IsPointInRect(D2D_POINT_2F p) {
-	return (p.x > rect.left + pos.x && 
-			p.x < rect.right + pos.x &&
-			p.y > rect.top + pos.y &&
-			p.y < rect.bottom + pos.y);
+	return (p.x >= rect.left + pos.x && 
+			p.x <= rect.right + pos.x &&
+			p.y >= rect.top + pos.y &&
+			p.y <= rect.bottom + pos.y);
 }
 
 D2D_MATRIX_3X2_F Object::getMat() {
